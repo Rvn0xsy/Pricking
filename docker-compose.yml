@@ -1,7 +1,9 @@
 version: '3'
 services:
   nginx:
-    image: rvn0xsy/pricking:v1
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
     ports:
      - "80:80"
     volumes:
