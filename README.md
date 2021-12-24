@@ -31,7 +31,7 @@ $ make
 ### Pricking Web
 
 ```bash
-$ ./Pricking -url https://payloads.online
+$ ./pricking -url https://payloads.online
 ```
 
 ### 配置文件
