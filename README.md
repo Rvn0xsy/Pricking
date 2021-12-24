@@ -28,6 +28,12 @@ $ cd Pricking
 $ make
 ```
 
+### Pricking Web
+
+```bash
+$ ./Pricking -url https://payloads.online
+```
+
 ### 配置文件
 
 ```yaml

@@ -95,19 +95,29 @@ func (this *Handler) modifyResponse(w *http.Response) error {
 		w.Header.Del("Content-Encoding")
 		respBodyByte = this.unGzipResponse(respBodyByte)
 	}
+
+	// 移除内容安全策略
+	w.Header.Del("Content-Security-Policy-Report-Only")
+	w.Header.Del("Content-Security-Policy")
+	respBodyByte = bytes.Replace(respBodyByte, []byte("Content-Security-Policy"), []byte( "") , -1)
+	respBodyByte = bytes.Replace(respBodyByte, []byte("content-security-policy"), []byte( "") , -1)
+
+	// 注入内容
 	respBodyByte = bytes.Replace(respBodyByte, []byte("</body>"), []byte(this.injectBody + "</body>") , -1)
+
 	w.Body = ioutil.NopCloser(bytes.NewReader(respBodyByte))
 	w.ContentLength = int64(len(respBodyByte))
 	w.Header.Set("Content-Length", strconv.Itoa(len(respBodyByte)))
 	return nil
 }
 
-func (this *Handler) prickingResponse(w http.ResponseWriter, r *http.Request) {
+func (this *Handler) prickingResponse(w http.ResponseWriter, r *http.Request) bool {
 	if strings.HasPrefix(r.URL.Path, this.prickingPrefixUrl) {
 		file := this.staticDir + r.URL.Path[len(this.prickingPrefixUrl):]
 		http.ServeFile(w, r, file)
-		return
+		return true
 	}
+	return false
 }
 
 func (this *Handler) loggingRequest(r *http.Request) {
@@ -144,13 +154,13 @@ func (this *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err)
 	}
-
-	this.prickingResponse(w, r)
-
 	r.Host = remote.Host // 覆盖Host头
 
-	this.loggingRequest(r)
+	if this.prickingResponse(w, r) {
+		return
+	}
 
+	this.loggingRequest(r)
 	proxy := httputil.NewSingleHostReverseProxy(remote)
 	proxy.ModifyResponse = this.modifyResponse
 
@@ -171,7 +181,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
 	// multiWriter := io.MultiWriter(os.Stdout, logFile)
 	handler.logger = log.New(logFile, "", 1)
 	err = http.ListenAndServe(handler.listenAddress, &handler)
