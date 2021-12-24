@@ -1,0 +1,4 @@
+.idea/
+dist/
+*.txt
+.DS_Store

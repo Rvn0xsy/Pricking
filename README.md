@@ -8,21 +8,44 @@
 - [Pricking 项目（一） ：使用介绍](https://payloads.online/archivers/2021-02-18/1)
 - [Pricking 项目（二） ：JS模块开发](https://payloads.online/archivers/2021-02-18/2)
 
+:collision: 支持HTTPS/HTTP
+
 ## Usage
 
 > 使用本项目需要拥有一个域名，将A记录指向到当前服务器，否则只能通过IP访问。
 
-```
+### 安装方式 - 下载二进制文件
+
+[Releases](https://github.com/Rvn0xsy/Pricking/releases)
+
+### 安装方式 - 编译
+
+```bash
 $ git clone https://github.com/Rvn0xsy/Pricking
 $ cd Pricking
-# 修改Docker-Compose环境变量设置为你要克隆的网站
-$ docker-compose up -d
+$ make
 ```
 
-### 查看日志
+### 配置文件
 
-```
-$ tail -f access.log
+```yaml
+filter_type:
+  - "text/html" # 仅针对网页内容进行注入
+exclude_file:   # 静态文件的数据包不进行注入
+  - ".jpg"
+  - ".css"
+  - ".png"
+  - ".js"
+  - ".ico"
+  - ".svg"
+  - ".gif"
+  - ".jpeg"
+  - ".woff"
+  - ".tff"
+static_dir: "./static" # Pricking Suite 目录
+pricking_prefix_url: "/pricking_static_files" # 静态目录名，不能与目标网站冲突
+listen_address: ":9999" # 监听地址:端口
+inject_body: "<script src='/pricking_static_files/static.js' type='module'></script>" # 注入代码
 ```
 
 ## [Pricking Js Suite 模块说明](./static/)
