@@ -8,9 +8,11 @@
 - [Pricking 项目（一） ：使用介绍](https://payloads.online/archivers/2021-02-18/1)
 - [Pricking 项目（二） ：JS模块开发](https://payloads.online/archivers/2021-02-18/2)
 
-:collision: 支持HTTPS/HTTP
+:collision: :collision: :collision: 支持HTTPS/HTTP
 
-## Usage
+## 使用方法
+
+更多使用方式可以参考 [Pricking Wiki](https://github.com/Rvn0xsy/Pricking/wiki)
 
 > 使用本项目需要拥有一个域名，将A记录指向到当前服务器，否则只能通过IP访问。
 
