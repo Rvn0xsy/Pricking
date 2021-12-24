@@ -146,7 +146,15 @@ func (this *Handler) loggingRequest(r *http.Request) {
 	buffer.WriteString(newLine)
 	buffer.Write(bodyBytes)
 	handler.logger.Println(buffer.String())
+}
 
+func (this * Handler)modifyHost(r *http.Request,header string ,host string)  {
+	Url, err := url.Parse(r.Header.Get(header))
+	if  err != nil{
+		return
+	}
+	Url.Host = host
+	r.Header.Set(header, Url.String())
 }
 
 func (this *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -155,6 +163,9 @@ func (this *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 	r.Host = remote.Host // 覆盖Host头
+
+	this.modifyHost(r,"Referer",remote.Host)
+	this.modifyHost(r,"Origin",remote.Host)
 
 	if this.prickingResponse(w, r) {
 		return
