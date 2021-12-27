@@ -75,6 +75,9 @@ func (handler *Handler) modifyResponse(w *http.Response) error {
 	if w.StatusCode == 302 {
 		replacer := strings.NewReplacer(handler.Url,"")
 		newLocation := replacer.Replace(w.Header.Get("Location"))
+		if !strings.HasPrefix(newLocation,"/") {
+			newLocation = "/" + newLocation
+		}
 		w.Header.Set("Location",newLocation)
 	}
 
