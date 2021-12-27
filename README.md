@@ -50,7 +50,7 @@ exclude_file:   # 静态文件的数据包不进行注入
   - ".jpeg"
   - ".woff"
   - ".tff"
-static_dir: "./static" # Pricking Suite 目录
+static_dir: "./pricking-js-suite" # Pricking Js Suite 目录
 pricking_prefix_url: "/pricking_static_files" # 静态目录名，不能与目标网站冲突
 listen_address: ":9999" # 监听地址:端口
 inject_body: "<script src='/pricking_static_files/static.js' type='module'></script>" # 注入代码
