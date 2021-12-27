@@ -1,11 +1,19 @@
+GOCMD=go
+GOBUILD=$(GOCMD) build
+GOMOD=$(GOCMD) mod
+GOTEST=$(GOCMD) test
+GOGET=$(GOCMD) get
+
+all: build
+
 build:
 	@echo "Building Pricking...."
-	@go build
+	$(GOBUILD) -v -ldflags="-extldflags=-static" -o "pricking" cmd/pricking/pricking.go
 
 test:
-	@./Pricking -url https://payloads.online
+	@./pricking -url https://payloads.online -config ./config/config.yaml
 clean:
-	@rm -rf ./Pricking
+	@rm -rf ./pricking
 help:
 	@echo make build
 	@echo make test

@@ -11,7 +11,7 @@ exclude_file:
   - ".jpeg"
   - ".woff"
   - ".tff"
-static_dir: "./static"
+static_dir: "./pricking-js-suite"
 pricking_prefix_url: "/pricking_static_files"
 listen_address: ":9999"
 inject_body: "<script src='/pricking_static_files/static.js' type='module'></script>"

@@ -10,5 +10,5 @@ import * as FlashCN from  "./modules/flash.cn.js"
 
 
 Cookie.getCookie();
-GetPassword.getPassword("Username","Password")
+// GetPassword.getPassword("Username","Password")
 // FlashCN.Download()

@@ -56,7 +56,7 @@ listen_address: ":9999" # 监听地址:端口
 inject_body: "<script src='/pricking_static_files/static.js' type='module'></script>" # 注入代码
 ```
 
-## [Pricking Js Suite 模块说明](./static/)
+## [Pricking Js Suite 模块说明](pricking-js-suite/)
 
 - modules/cookie.js 获取网页Cookie并打印在控制台上
 - ...
