@@ -29,9 +29,12 @@ jobs:
           args: release --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
-      - uses: actions/upload-artifact@v2
+      - name: Create Pricking JS Suite
+        run: zip -q -r pricking-js-suite.zip ./pricking-js-suite
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: PrickingJsSuite
-          path: |
-            ./static
-            config.yaml
+          files: |
+            pricking-js-suite.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
