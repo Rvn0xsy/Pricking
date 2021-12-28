@@ -16,6 +16,12 @@
 
 > 使用本项目需要拥有一个域名，将A记录指向到当前服务器，否则只能通过IP访问。
 
+### 安装方式 - Golang install
+
+```bash
+$ go install -v github.com/Rvn0xsy/Pricking/cmd/pricking@latest
+```
+
 ### 安装方式 - 下载二进制文件
 
 [Releases](https://github.com/Rvn0xsy/Pricking/releases)
@@ -28,10 +34,10 @@ $ cd Pricking
 $ make
 ```
 
-### Pricking Web
+### Quick Start Pricking Web :collision:
 
 ```bash
-$ ./pricking -url https://payloads.online
+$ ./pricking -config ./config/config.yaml -url https://payloads.online
 ```
 
 ### 配置文件
