@@ -1,6 +1,6 @@
 filter_type:
   - "text/html"
-exclude_file:
+exclude_file_types:
   - ".jpg"
   - ".css"
   - ".png"
@@ -11,6 +11,14 @@ exclude_file:
   - ".jpeg"
   - ".woff"
   - ".tff"
+save_file_types:
+  - "application/octet-stream"
+  - "application/pdf"
+plugins:
+  username:
+    enable: true
+    path: "/get_users"
+save_file_dir: "./tmp"
 static_dir: "./pricking-js-suite"
 pricking_prefix_url: "/pricking_static_files"
 listen_address: ":9999"

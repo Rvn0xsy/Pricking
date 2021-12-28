@@ -5,6 +5,8 @@ import (
 	"compress/gzip"
 	"encoding/binary"
 	"io/ioutil"
+	"log"
+	"github.com/snluu/uuid"
 )
 
 // UnGzipData Gzip 解压
@@ -22,4 +24,19 @@ func UnGzipData(data []byte) []byte {
 		}
 		return undatas
 	}
+}
+
+func UUID() string {
+	return uuid.Rand().Hex()
+}
+
+
+func SaveFile(dir string, data []byte) bool {
+	err := ioutil.WriteFile(dir,data,0666)
+	log.Println("save file :",dir)
+	if err != nil{
+		log.Fatalln(err)
+		return false
+	}
+	return true
 }
