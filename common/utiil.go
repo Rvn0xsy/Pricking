@@ -4,9 +4,9 @@ import (
 	"bytes"
 	"compress/gzip"
 	"encoding/binary"
+	"github.com/snluu/uuid"
 	"io/ioutil"
 	"log"
-	"github.com/snluu/uuid"
 )
 
 // UnGzipData Gzip 解压

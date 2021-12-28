@@ -1,8 +1,8 @@
 package main
 
 import (
-	"Pricking/runner"
 	"flag"
+	"github.com/Rvn0xsy/Pricking/runner"
 	"log"
 	"net/http"
 	"os"
