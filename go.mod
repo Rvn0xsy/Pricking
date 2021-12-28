@@ -2,7 +2,10 @@ module Pricking
 
 go 1.17
 
-require github.com/spf13/viper v1.10.1
+require (
+	github.com/snluu/uuid v0.0.0-20130306162636-1dd34a9ad6c0
+	github.com/spf13/viper v1.10.1
+)
 
 require (
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
