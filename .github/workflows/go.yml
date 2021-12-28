@@ -29,8 +29,13 @@ jobs:
           args: release --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
+          
       - name: Create Pricking JS Suite
         run: zip -q -r pricking-js-suite.zip ./pricking-js-suite
+        
+      - name: mod tidy
+        run: go mod tidy -compat=1.17
+        
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
