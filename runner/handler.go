@@ -1,9 +1,9 @@
 package runner
 
 import (
-	"Pricking/common"
 	"bytes"
 	"fmt"
+	"github.com/Rvn0xsy/Pricking/common"
 	"github.com/spf13/viper"
 	"io/ioutil"
 	"log"
