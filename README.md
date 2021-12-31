@@ -5,8 +5,6 @@
 想要了解更多可以阅读：
 
 - [红队技巧：基于反向代理的水坑攻击](https://payloads.online/archivers/2021-02-16/1)
-- [Pricking 项目（一） ：使用介绍](https://payloads.online/archivers/2021-02-18/1)
-- [Pricking 项目（二） ：JS模块开发](https://payloads.online/archivers/2021-02-18/2)
 
 :collision: :collision: :collision: 支持HTTPS/HTTP
 
